@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Flipper</title>
+
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px grey;
+      }
+
+      .header {
+        height: 150px;
+      }
+
+      #flip-me {
+        font-size: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 id="flip-me">Hi There!</h1>
+      </div>
+      <div>
+        <input type="button" value="Click Me" id="btn" onclick="flipMe()" />
+      </div>
+    </div>
+
+    <script>
+      const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+      function flipMe() {
+        changeColour();
+        changeFont();
+      }
+
+      function changeColour() {
+        let hexColor = "#";
+        for (let i = 0; i < 6; i++) {
+          hexColor += hex[getRandom()];
+        }
+        document.body.style.color = hexColor;
+      }
+
+      function changeFont() {
+        let font;
+        switch (getRandom()) {
+          case 0:
+          case 1:
+            font = "Arial";
+            break;
+          case 2:
+          case 3:
+            font = "Verdana";
+            break;
+          case 4:
+          case 5:
+            font = "Tahoma";
+            break;
+          case 6:
+          case 7:
+            font = "Trebuchet MS";
+            break;
+          case 8:
+          case 9:
+            font = "Times New Roman";
+            break;
+          case 10:
+          case 11:
+            font = "Georgia";
+            break;
+          case 12:
+          case 13:
+            font = "Garamond";
+            break;
+          case 14:
+          case 15:
+            font = "Comic Sans MS";
+            break;
+          case 16:
+            font = "Courier New";
+            break;
+          default:
+            font = "Brush Script MT";
+            break;
+        }
+
+        document.querySelector("h1").style.fontFamily = font;
+      }
+
+      function getRandom() {
+        return Math.floor(Math.random() * hex.length);
+      }
+    </script>
+  </body>
+</html>
